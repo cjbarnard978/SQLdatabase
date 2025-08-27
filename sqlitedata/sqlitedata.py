@@ -15,5 +15,27 @@
 import sqlite3
 print("=== Relational Database Witches in Fife 1563-1662 ===")
 print("connection to csv")
-conn = sqlite3.connect ('WitchesinFife.db')  
+conn = sqlite3.connect ('WitchesinFife.db') 
+cursor = conn.cursor() 
 print('connected to WitchesinFife.db')
+
+print("individuals")
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS individuals (
+    IDnumber INTEGER PRIMARY KEY AUTOINCREMENT,
+    First Name TEXT,
+    Last Name TEXT,
+    Date INTEGER
+)                     
+''')
+
+print("locations")
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS locations (
+    Presbytery INTEGER PRIMARY KEY AUTOINCREMENT,
+    County TEXT,
+    Parish TEXT,
+    Settlement TEXT,
+    Date INTEGER,                                                              
+)
+''')
