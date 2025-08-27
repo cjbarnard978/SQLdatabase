@@ -10,3 +10,10 @@
 #and ask Copilot to create a third table grouping the data by presbytery using the ID numbers as a foreign key. Ideally, this will create a relational database that can identify gaps in the research.
 #This table was created using a digital project that is essentially a tertiary source, and by arranging the data in these ways, I can identify presbyteries or individuals who 
 #have been neglected by scholarship.
+#I want to try and create the database by hand, because I'm still unsure as to what I want in each table. I think this will help me decide on the logic for that element. 
+
+import sqlite3
+print("=== Relational Database Witches in Fife 1563-1662 ===")
+print("connection to csv")
+conn = sqlite3.connect ('WitchesinFife.db')  
+print('connected to WitchesinFife.db')
