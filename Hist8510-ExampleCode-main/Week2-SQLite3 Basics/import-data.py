@@ -18,13 +18,13 @@ print("\nStep 2: Reading CSV file...")
 venues_data = []
 
 try:
-    with open('corand100.csv', 'r', encoding='utf-8') as file:
+    with open('co-rand-100.csv', 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
             venues_data.append(row)
-    print(f"✓ Read {len(venues_data)} records from corand100.csv")
+    print(f"✓ Read {len(venues_data)} records from co-rand-100.csv")
 except FileNotFoundError:
-    print("❌ Error: corand100.csv file not found!")
+    print("❌ Error: co-rand-100.csv file not found!")
     print("Make sure the CSV file is in the same folder as this script")
     exit()
 

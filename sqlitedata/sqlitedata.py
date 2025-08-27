@@ -1,0 +1,12 @@
+#Since I am in the process of creating a database from scratch for my current research
+#I am using older data already in a CSV to practice the code. I am going to take the data I used for Dr. Burd's mapping project, and create a relational database
+#that will address data concerns I anticipate seeing in my current project as it progresses. First, I am going to ask Copilot to break this data
+#up into three tables: one that assigns a primary key to each individual person in the database, one that arranges the data based on the presbytery the individual belongs to, 
+#and one that pulls out any row with a NULL value present. What I want to interrogate is the way in which NULL values affect the individual tables, and 
+#how the NULL values affect the ways in which things "relate" for lack of a better work. I will likely have NULL values pretty consistently moving forward.
+#I want to make sure I understand the way that these affect data in part and as a whole. 
+#Because this was an ArcGIS table, every entry has an ID number assigned, which I will turn into the INTEGER PRIMARY KEY. I will likely prioritize asking Copilot to standardize the value "unknown"
+#across the data and change it to NULL to improve the controlled vocabulary. Then I will ask Copilot to group the data by presbytery using the ID numbers as a foreign key, 
+#and ask Copilot to create a third table grouping the data by presbytery using the ID numbers as a foreign key. Ideally, this will create a relational database that can identify gaps in the research.
+#This table was created using a digital project that is essentially a tertiary source, and by arranging the data in these ways, I can identify presbyteries or individuals who 
+#have been neglected by scholarship.
