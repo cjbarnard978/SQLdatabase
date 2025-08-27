@@ -30,10 +30,11 @@ CREATE TABLE IF NOT EXISTS individuals (
     Date INTEGER
 )                     
 ''')
+print('created')
+
 print('locations')
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS locations (
-    Presbyteryid INTEGER PRIMARY KEY AUTOINCREMENT,
     IDnumber INTEGER,
     Presbytery TEXT,
     Parish TEXT,
@@ -54,45 +55,8 @@ CREATE TABLE IF NOT EXISTS missing_values (
     IDnumber INTEGER,
     Presbyteryid INTEGER,
     FOREIGN KEY (IDnumber) REFERENCES individuals (IDnumber),
-    FOREIGN KEY (Presbyteryid) REFERENCES locations (Presbyteryid)
 )
 ''')
 print('created')
-
-# Import data from the updated CSV file
-with open('/Users/ceciliabarnard/8510/sqlitedata/witchcraftrialsfife_updated.csv', 'r') as file:
-    reader = csv.DictReader(file)
-
-    for row in reader:
-        try:
-            # Ensure data types match the schema
-            id_number = int(row['ID Number']) if row['ID Number'] and row['ID Number'].isdigit() else None
-            year = int(row['Year']) if row['Year'] and row['Year'].isdigit() else None
-
-            # Insert data into the 'individuals' table
-            cursor.execute('''
-            INSERT INTO individuals (IDnumber, First, Last, Date)
-            VALUES (?, ?, ?, ?)
-            ''', (id_number, row['First Name'], row['Last Name'], year))
-
-            # Insert data into the 'locations' table
-            cursor.execute('''
-            INSERT OR IGNORE INTO locations (IDnumber, Presbytery, Parish, Settlement)
-            VALUES (?, ?, ?, ?)
-            ''', (id_number, row['Presbytery'], row['Parish'], row['Settlement']))
-
-            # Insert data into the 'missing_values' table if any column is NULL or 'unknown'
-            if 'unknown' in row.values():
-                cursor.execute('''
-                INSERT INTO missing_values (First, Last, Date, Presbytery, Characterizations, IDnumber, Presbyteryid)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                ''', (row['First Name'], row['Last Name'], year, row['Presbytery'], row['Characterizations'], id_number, row['PresbyteryID']))
-        except (ValueError, TypeError) as e:
-            print(f"Skipping row due to error: {e}")
-
-# Commit changes and close the connection
-conn.commit()
-conn.close()
-print('Data imported successfully.')
 
 
