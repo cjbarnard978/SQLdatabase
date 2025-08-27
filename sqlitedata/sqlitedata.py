@@ -13,7 +13,6 @@
 #I want to try and create the database by hand, because I'm still unsure as to what I want in each table. I think this will help me decide on the logic for that element. 
 
 import sqlite3
-import csv
 
 print("=== Relational Database Witches in Fife 1563-1662 ===")
 print("connection to csv")
@@ -44,19 +43,60 @@ CREATE TABLE IF NOT EXISTS locations (
 ''')
 print('created')
 
-print('missing values')
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS missing_values (
-    First TEXT,
-    Last TEXT,
-    Date INTEGER,
-    Presbytery TEXT,
-    Characterizations TEXT,
-    IDnumber INTEGER,
-    Presbyteryid INTEGER,
-    FOREIGN KEY (IDnumber) REFERENCES individuals (IDnumber),
-)
-''')
-print('created')
+print('structure committed')
+conn.commit()
+
+# Display the schema of all tables in the database
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+tables = cursor.fetchall()
+print("Tables in the database:")
+for table in tables:
+    print(table[0])
+    cursor.execute(f"PRAGMA table_info({table[0]})")
+    schema = cursor.fetchall()
+    print("Schema:")
+    for column in schema:
+        print(column)
+
+# Close the connection
+conn.close()
+print('Connection closed.')
+
+# Reopen the connection to import data
+conn = sqlite3.connect('WitchesinFife.db')
+cursor = conn.cursor()
+
+# Import data from the CSV file
+import csv
+with open('/Users/ceciliabarnard/8510/sqlitedata/witchcraftrialsfife.csv', 'r') as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        try:
+            # Ensure data types match the schema
+            id_number = int(row['ID Number']) if row['ID Number'] and row['ID Number'].isdigit() else None
+            year = int(row['Year']) if row['Year'] and row['Year'].isdigit() else None
+
+            # Insert data into the 'individuals' table
+            cursor.execute('''
+            INSERT INTO individuals (IDnumber, First, Last, Date)
+            VALUES (?, ?, ?, ?)
+            ''', (id_number, row['First Name'], row['Last Name'], year))
+
+            # Insert data into the 'locations' table
+            cursor.execute('''
+            INSERT OR IGNORE INTO locations (IDnumber, Presbytery, Parish, Settlement)
+            VALUES (?, ?, ?, ?)
+            ''', (id_number, row['Presbytery'], row['Parish'], row['Settlement']))
+        except (ValueError, TypeError, KeyError) as e:
+            print(f"Skipping row due to error: {e}")
+
+# Commit changes and close the connection
+conn.commit()
+conn.close()
+print('Data imported successfully.')
+
+
+
 
 
