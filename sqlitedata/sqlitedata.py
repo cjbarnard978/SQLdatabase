@@ -19,7 +19,7 @@ conn = sqlite3.connect ('WitchesinFife.db')
 cursor = conn.cursor() 
 print('connected to WitchesinFife.db')
 
-print("individuals")
+print('individuals')
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS individuals (
     IDnumber INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,14 +28,33 @@ CREATE TABLE IF NOT EXISTS individuals (
     Date INTEGER
 )                     
 ''')
-
-print("locations")
+print('locations')
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS locations (
-    Presbytery INTEGER PRIMARY KEY AUTOINCREMENT,
-    County TEXT,
+    Presbyteryid INTEGER PRIMARY KEY AUTOINCREMENT,
+    IDnumber INTEGER,
+    Presbytery TEXT,
     Parish TEXT,
     Settlement TEXT,
-    Date INTEGER,                                                              
+    FOREIGN KEY (IDnumber) REFERENCES individuals (IDnumber),
+    UNIQUE (Presbyteryid)                                         
+)   
+''')
+print('created')
+
+print('missing values')
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS missing_values (
+    nullID INTEGER PRIMARY KEY AUTOINCREMENT,
+    First Name TEXT,
+    Last Name TEXT,
+    Date INTEGER,
+    Presbytery TEXT,
+    Characterizations TEXT,
+    IDnumber INTEGER,
+    Presbyteryid INTEGER,
+    FOREIGN KEY (IDnumber) REFERENCES individuals (IDnumber),
+    FOREIGN KEY (Presbyteryid) REFERENCES locations (Presbyteryid)
 )
 ''')
+print('created')
