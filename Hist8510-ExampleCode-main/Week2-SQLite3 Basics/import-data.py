@@ -18,7 +18,7 @@ print("\nStep 2: Reading CSV file...")
 venues_data = []
 
 try:
-    with open('co-rand-100.csv', 'r', encoding='utf-8') as file:
+    with open('/Users/ceciliabarnard/8510/Hist8510-ExampleCode-main/Week2-SQLite3 Basics/co-rand-100.csv', 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
             venues_data.append(row)
