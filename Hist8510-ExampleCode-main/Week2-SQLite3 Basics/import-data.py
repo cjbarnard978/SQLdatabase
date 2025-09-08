@@ -18,13 +18,13 @@ print("\nStep 2: Reading CSV file...")
 venues_data = []
 
 try:
-    with open('/Users/ceciliabarnard/8510/Hist8510-ExampleCode-main/Week2-SQLite3 Basics/co-rand-100.csv', 'r', encoding='utf-8') as file:
+    with open('co-rand-100.csv', 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
             venues_data.append(row)
-    print(f"✓ Read {len(venues_data)} records from co-rand-100.csv")
+    print(f"✓ Read {len(venues_data)} records from corand100.csv")
 except FileNotFoundError:
-    print("❌ Error: co-rand-100.csv file not found!")
+    print("❌ Error: corand100.csv file not found!")
     print("Make sure the CSV file is in the same folder as this script")
     exit()
 
@@ -33,6 +33,7 @@ print("\nStep 3: Importing cities...")
 cities_added = 0
 cities_skipped = 0
 
+#.strip removes leading/trailing whitespace
 for venue in venues_data:
     city = venue['city'].strip() if venue['city'] else None
     state = venue['state'].strip() if venue['state'] else None
