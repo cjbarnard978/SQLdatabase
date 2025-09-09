@@ -110,7 +110,6 @@ with open('/Users/ceciliabarnard/8510/sqlitedata/witchcraftrialsfife.csv', 'r') 
         except (ValueError, TypeError, KeyError) as e:
             print(f"Skipping row due to error: {e}")
 
-
 # Commit changes and close the connection
 conn.commit()
 conn.close()
