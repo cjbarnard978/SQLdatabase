@@ -10,7 +10,6 @@ How to run:
 Routes:
 - / (home page): Shows a list of 10 venues
 - /venue/<id> (venue detail): Shows detailed info for one venue
-
 Database:
 - Uses SQLite database: ../Week3-SQL-Queries/sc_gay_guides.db
 - Tables: venues, cities
@@ -151,6 +150,8 @@ def cities():
     conn.close()
     return render_template('cities.html', cities=cities)
 
+
+
 # This block only runs when the script is executed directly
 # (not when imported as a module)
 if __name__ == '__main__':
@@ -160,3 +161,15 @@ if __name__ == '__main__':
     # - host='0.0.0.0': Makes the server accessible from any IP address
     # - port=5001: Runs on port 5001 (changed from 5000 to avoid conflicts)
     app.run(debug=True, host='0.0.0.0', port=5001)
+
+{% extends "base.html" %}
+
+{% block title %}SC Gay Guides - Cities{% endblock %}
+
+{% block content %}
+<h1>South Carolina Gay Guides - Cities</h1>
+<p>Here are some cities from the SC Gay Guides database:</p>
+
+{% for city in cities %}
+   {{ city['city_name']}}
+{% endfor %}
