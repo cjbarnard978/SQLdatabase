@@ -41,7 +41,7 @@ conn.close()
 print('Data imported successfully.')
 
 #Query 1: I want to count the number of unknown values in the 
-# locations table and arrange them in descending order based on Presbytery
+# locations table and arrange them by Presbytery in descending order
 # Ideally this will help me figure out which Presbytery's archives have been least examined.
 
 import sqlite3
@@ -55,11 +55,27 @@ SELECT
     Parish
 FROM locations 
 WHERE Parish = unknown
+COUNT unknown
 ORDER BY Presbytery
+ARRANGE desc
 """
 print ('done')
 
 #Query 2
+#Saint Andrews Presbytery has a significant number of trials. 
+#I want to limit the records by St. Andrews as a Presbytery and then join to the individuals column.
+#That way I have every record linked to St. Andrews in one location for quick reference 
 
+query = """
+SELECT
+
+"""
 
 #Query 3
+#After adding a column to the individuals table that discusses the charges each person faced, I want to join it to the locations column so I can see 
+#if there is a prevalent charge in various locations.  
+
+query = """
+SELECT
+
+"""
