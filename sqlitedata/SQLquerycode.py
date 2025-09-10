@@ -16,41 +16,54 @@ conn = sqlite3.connect ('WitchesinFife.db')
 cursor = conn.cursor() 
 print ('connected')
 
-query = """
-SELECT 
-    p.Presbytery, 
-    m.Parish
-FROM locations l
-WHERE m.Parish = unknown
-COUNT unknown
-ORDER BY p.Presbytery
-ARRANGE desc
-"""
-print ('done')
 
+query1 = """
+SELECT 
+    Presbytery, COUNT(*) as unknown_count 
+FROM locations 
+GROUP BY Presbytery
+ORDER BY unknown_count DESC
+"""
+
+cursor.execute(query1)
+results1 = cursor.fetchall()
+print('unknown parishes')
+for row in results1:
+    print(row)
 #Query 2
 #Saint Andrews Presbytery has a significant number of trials. 
 # I want to limit the records by St. Andrews as a Presbytery and then join to the individuals column.
 
-query = """
+query2 = """
 SELECT 
-    p.Presbytery
-FROM locations l
-WHERE p.Presbytery = St. Andrews 
+    Presbytery
+FROM locations
+WHERE Presbytery = St. Andrews 
 JOIN individuals i ON i.IDnumber = l.IDnumber
 """
-print('joined')
+
+cursor.execute(query2)
+results2 = cursor.fetchall()
+print('unknown parishes')
+for row in results2:
+    print(row)
 
 #Query 3
 #After adding a column to the individuals table that discusses the charges each person faced
 #I want to join it to the locations column 
 #And order by parish to see the prevalence of each accusation by location.  
 
-query = """
+query3 = """
 SELECT
-    ch.Characterizations
-FROM crimes c
-JOIN locations l ON l.IDnumber = c.IDnumber
-ORDER By p.Parish
+    Characterizations
+FROM crimes 
+JOIN locations ON l.IDnumber = c.IDnumber
+ORDER By Parish
 """
-print('ordered')
+
+cursor.execute(query3)
+results3 = cursor.fetchall()
+print('unknown parishes')
+for row in results3:
+    print(row)
+conn.close()
