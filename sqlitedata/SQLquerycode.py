@@ -36,15 +36,15 @@ for row in results1:
 
 query2 = """
 SELECT 
-    Presbytery
-FROM locations
-WHERE Presbytery = St. Andrews 
+    l.Presbytery
+FROM locations l
 JOIN individuals i ON i.IDnumber = l.IDnumber
+WHERE l.Presbytery = 'St. Andrews' 
 """
 
 cursor.execute(query2)
 results2 = cursor.fetchall()
-print('unknown parishes')
+print('St. Andrews Presbytery')
 for row in results2:
     print(row)
 
@@ -55,9 +55,9 @@ for row in results2:
 
 query3 = """
 SELECT
-    Characterizations
-FROM crimes 
-JOIN locations ON l.IDnumber = c.IDnumber
+    c.Characterizations
+FROM crimes c
+JOIN locations l ON l.IDnumber = c.IDnumber
 ORDER By Parish
 """
 
@@ -67,3 +67,4 @@ print('unknown parishes')
 for row in results3:
     print(row)
 conn.close()
+
