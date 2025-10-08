@@ -1,0 +1,11 @@
+Reinstalling packages document
+install.packages("tidyverse")
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("quanteda")
+install.packages("cleanNLP")
+install.packages("topicmodels")
+install.packages("word2vec")
+install.packages("leaflet")
+install.packages("sf")
+install.packages("tigris")

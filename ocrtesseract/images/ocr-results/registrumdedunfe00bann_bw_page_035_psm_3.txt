@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_035.png
+Word count: 127
+Confidence: 56.3%
+--------------------------------------------------
+
+TABULA. THe PABILL OF THE AULD REGISTRE VITUE PE TREINE RKODS. Atheray. vi. xxvi. xxvii. Ixxxxv. 0 [N. 7. 355. 585, 216.] Reqist: . oy . : Dunfermely Auldesteill. vi. lix. [N. 10. 461.] ful aren. Abyrerumbin, — xij. Ixxv. Ixxx. Ixxxxiiij. ev. evi. [N. 53. 129. 144. 213. 258, 260] Anguillarnm, xii. [N. 63.] Atholia. xvii. [N.85.] Arlory. xxsix. et xliii, DN. 430. 434.] Ardlethar, Ixxxix. [N. 198.] Adthangy. Ixxxxix. [N. 252.] Beth oceidens. xviii. IXxxxi. et Ixxxxij. [N. 59. 207. 210.] Baleristin. vic et xii. [N. 3. 59.] Beth. xiii. xvii. xviij. Inxxiii. [. N. 66. 86.57. 154.] Bethfleming. Ixxxvi. ii carte. [N. 177. 178.] Berwyk. xxi. xxvic et dix, [N. 356. 120. 461.] Balandrum, xxi, [N.358.] Balbard. xxvix. exilj. exiiij. [N. 431. 315. 314]

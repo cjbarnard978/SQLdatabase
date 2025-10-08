@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_032.png
+Word count: 141
+Confidence: 91.0%
+--------------------------------------------------
+
+XXVvi PREFACE. Even the grave of Robert the Bruce, which was lately vpened, is not distinguished in any way, exeept that it is said to lie below a vulgar modern pulpit. Of the Cloisters nothing remains. The oldest remaining part of the Palace is not of higher antiquity (unless perhaps the mere foundations) than the 15th century. The greater part of the pieturesque ruins is more modern. The Palace must have been stil] habitable on the 19th of November 1600, when Charles I. was born there. It was fit that after five centuries, the last princely deseendant to be born in Seotland of the marriage of Malcolm and Saint Margaret, who was to bear to the Anglo-Saxon throne, the blood of the Confessor, and the misfortunes of all his raee, should first see the light within the old walls of Danfernilin.

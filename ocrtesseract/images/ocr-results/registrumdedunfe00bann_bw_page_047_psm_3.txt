@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_047.png
+Word count: 10
+Confidence: 83.9%
+--------------------------------------------------
+
+REGISTRUM ABBACITE SANCTE TRINITATIS ET BEATE MARGARETE REGINE DE DUNFERMELYN.

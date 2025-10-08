@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_477.png
+Word count: 2
+Confidence: 80.3%
+--------------------------------------------------
+
+Ui (of

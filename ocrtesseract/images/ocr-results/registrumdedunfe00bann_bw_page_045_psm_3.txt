@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_045.png
+Word count: 3
+Confidence: 90.0%
+--------------------------------------------------
+
+REGISTRUM DE DUNFERMELYN.

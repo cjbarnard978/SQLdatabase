@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_006.png
+Word count: 9
+Confidence: 84.0%
+--------------------------------------------------
+
+EDINBURGIDT: PRINTED BY THOMAS CONSTABLE, PRINTER TO HER MAJ

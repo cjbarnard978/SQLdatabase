@@ -1,0 +1,7 @@
+OCR Results - PSM 3
+Image: registrumdedunfe00bann_bw_page_005.png
+Word count: 24
+Confidence: 68.4%
+--------------------------------------------------
+
+“+> LIBER CARTARUM ABBATIE BENEDICTINE S. S. TRINTATIS ET B. MARGARETE REGINE DE DUNFERMELYN IMPRESSUM EDINBURG] M. DCCC. XLIE. fs . 4 LLB RAM
