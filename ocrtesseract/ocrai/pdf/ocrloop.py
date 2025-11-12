@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 from pdf2image import convert_from_path
 import os
+import re
 
 
 required_packages = ['numpy', 'pandas', 'pytesseract', 'Pillow', 'opencv-python', 'pdf2image']
@@ -96,26 +97,25 @@ for img_path in input_dir.glob('*.png'):
     except Exception as e:
         print(f'❌ Error processing {img_path.name}: {e}')
 
-import openai 
-openai.api_key = 'yourkeyhere'
-def correct_text_with_openai(text): 
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are an expert at correcting OCR errors in historical texts."},
-            {"role": "user", "content": f"Please correct the following OCR text:\n{text}"}
-        ]
-    )
-    return response['choices'][0]['message']['content']
+# OpenAI / external-API usage removed by request. Low-confidence OCR outputs
+# are handled locally for manual review.
 
+from shutil import copy2
 
-for low_conf_file in results_dir.glob('*_low_confidence.txt'):
-    with open(low_conf_file, 'r', encoding='utf-8') as f:
-        ocr_text = f.read()
-    corrected_text = correct_text_with_openai(ocr_text)
-    corrections_dir = Path('/Users/ceciliabarnard/Desktop/8510/ocrtesseract/ocrai/pdf/openai_corrections')
-    corrections_dir.mkdir(exist_ok=True)
-    corrected_file = corrections_dir / (low_conf_file.stem + '_openai_corrected.txt')
-    with open(corrected_file, 'w', encoding='utf-8') as f:
-        f.write(corrected_text)
-    print(f'Corrected text saved to {corrected_file}')
+# Collect low-confidence files and copy them to a local manual-review folder
+manual_review_dir = results_dir / 'manual_review'
+manual_review_dir.mkdir(exist_ok=True)
+
+low_conf_files = list(results_dir.glob('*_low_confidence.txt'))
+if low_conf_files:
+    print(f"Found {len(low_conf_files)} low-confidence file(s). Preparing for manual review...")
+    for low_conf_file in low_conf_files:
+        try:
+            dest = manual_review_dir / low_conf_file.name
+            copy2(low_conf_file, dest)
+            print(f"Copied {low_conf_file.name} -> {dest}")
+        except Exception as e:
+            print(f"❌ Failed to copy {low_conf_file.name} to manual review: {e}")
+    print(f"Manual review files are in: {manual_review_dir}")
+else:
+    print("No low-confidence OCR outputs found.")
